@@ -11,7 +11,8 @@ lazy val commonDependencies = Seq(
   "org.scalatest" % "scalatest_2.11" % "3.0.1" % "test",
   "org.scalacheck" %% "scalacheck" % "1.13.4" % "test",
   "org.slf4j" % "slf4j-api" % "1.7.22",
-  "com.typesafe" % "config" % "1.3.1"
+  "com.typesafe" % "config" % "1.3.1",
+  "org.foundweekends" % "bintrayy" % "0.5.4"
 )
 
 lazy val json4s = Seq(
@@ -46,13 +47,16 @@ lazy val root = (project in file(".")).
     libraryDependencies ++= flinkDependencies.map(_ % "provided"),
 //    libraryDependencies ++= flinkDependencies.map(_ % "compile"),
     libraryDependencies ++= breezeDependencies.map(_ % "compile"),
-    libraryDependencies ++= hashDependencies.map(_ % "compile")
-  )
+    libraryDependencies ++= hashDependencies.map(_ % "compile"),
+)
 
 lazy val commonSettings = Seq(
   organization := "hu.sztaki.ilab",
   version := "0.1.0",
   scalaVersion := "2.11.7",
-  test in assembly := {}
+  test in assembly := {},
+  publishArtifact in Test := false,
+  bintrayOrganization := Some("streamline"),
+  bintrayRepository := "sbt",
+  bintrayPackage := "flink-ps"
 )
-
