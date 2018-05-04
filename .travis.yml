@@ -1,0 +1,26 @@
+language: scala
+scala:
+  - 2.11.7
+jdk: oraclejdk8
+script:
+  - sbt ++$TRAVIS_SCALA_VERSION test
+deploy:
+  provider: script
+  script: sbt publish
+  on:
+    condition: true
+
+
+before_cache:
+  - find $HOME/.ivy2 -name "ivydata-*.properties" -print -delete
+  - find $HOME/.sbt  -name "*.lock"               -print -delete
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/boot
+
+env:
+  global:
+    - secure: rxfzCQ3BdwGma+snnCJqQNKBU5T0iFpphzyut6ziq66TCZMUaLV476iJqDyYV73P3VfyqEPwQiUxbHP002z29VRup3J1++SgHXHrrtlcjeIcxQHB/X46yTeAXwmseNNMj699epSG8U1LDaYokd54FtPo7HqdIRlSHD53Zsk2tDLxwWwePhTYTN9mFIZNsSZX3Yd4fV61KQl03pZcpnLxc7pT/z6XxhWqCTYAOnyPKlcfjU5osFdwH67PZOGYThYjCPYxD/8zWzLybWDcRFzLab8w5cob0Cv9EaZ39ibeWybx/JkCorhnrvuP/IiGm1Y0OSHSMvzP/WPB2jlEzsOPKEYbQcMq1yBkyK59e8hSlzqlRNkfIqsEy3fOU1UPAWdDyb1Rd7LbhO0YRSiDBOdFezVoR+EG4bvXSLLXS+caZSd1wBtNvsQhHmnkzWAGl4kFpfdCtKJ8M64ZWoCMmr22Do/tK7i77/G1QVqFSsMRlUZs3fom2sNgVALmjoqYcAr8RCvHNncmzu/YsQY4LZarD2G8gl5p3Z+fYKGUnRJogLZkO6ZFQdbZJExaaP9LEdOxm/IzMkiGWKNPr/mNtoZNYH8Kz6miuHghdQe+tgILKHAWhYefyNu8gpj6Hl80qzpF6exrFcLoTXFw/tG29pw01sU/eZcnC6pmtxR9nSyaFhw=
+    - secure: zOvpDhzCpaDu7yYTdI+JcLqMCMlkWJCzqtCp8Z6pkY0dEdIJPqPA1symFDYTis8V9HTmV3c93MIO8gQI4BGOxBeyPIpwWQpodignX7hpdTD1CLRqPsvg11/f7RvIV2Z11fhQ90NfwUOJ5fMUQsgQXuM1qa6MqULOqaywCc9G64rTRpvha5lYUVX48blkH3U+0+M4rHvYcTHeYFws1pOTBIoQTp7n8MXiki5PvOkXnhfSZgf/hsXOEm0pFt27o6JD7m26ioND0SFVdNk39CTLRXYBdhsKh/yQs6pvp5++D1llvsX3Kxs1GFA21CU/D80HVsjflt+Obf4Nmru5DOsCtQgMwLfXxo3EFFaTYun8i++GH1M1k0bL00+XpTTGxPm1ytoiHc+IwRvnGh7vud6TIcNjVNkID5ffs/EkPcJKRUkyBLqgD7oRjMTKoWhtMCqjIn9RlgO1pIOnU2+CN7RUilDkHfgrweGP42mcSqueMvyX+kV+mZKwX1Y8bsdghCVfwVAG3lJgI0YQiDyKP4ZNbNA/NLDgZnty9eRkgQ/0R+0A8o5g1cIbkB1jG8qOmKTCO4+JL88YprrubEUeSYF0fUEmI1ClPw/LZxvj8XJ416/4ASW65SkCEHCEleCxpaD32F+n+PvJC0vvEYexMtYZuzL66Te8tg5pN27v5wQI23c=
