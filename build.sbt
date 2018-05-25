@@ -12,7 +12,8 @@ lazy val commonDependencies = Seq(
   "org.scalacheck" %% "scalacheck" % "1.13.4" % "test",
   "org.slf4j" % "slf4j-api" % "1.7.22",
   "com.typesafe" % "config" % "1.3.1",
-  "org.foundweekends" % "bintray" % "0.5.4"
+  "org.foundweekends" % "bintray" % "0.5.4",
+  "com.eed3si9n" % "sbt-assembly" % "0.14.3"
 )
 
 lazy val json4s = Seq(
