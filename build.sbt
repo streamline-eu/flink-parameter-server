@@ -6,6 +6,7 @@ scalaVersion := "2.11.7"
 
 lazy val flinkVersion = "1.4.0"
 lazy val breezeVersion = "0.13"
+resolvers += Resolver.bintrayIvyRepo("com.eed3si9n", "sbt-plugins")
 
 lazy val commonDependencies = Seq(
   "org.scalatest" % "scalatest_2.11" % "3.0.1" % "test",
